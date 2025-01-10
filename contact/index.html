@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Content</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h1>Contacts</h1>
     <nav>
         <div><a href="../index.html">Home</a></div>
         <div><a href="./index.html">Contacts</a></div>
         <div><a href="../projects/index.html">Projects</a></div>
         <div><a href="https://github.com/vivianlinnn" target="_blank">Profile</a></div>
     </nav>
+    <h1>Contacts</h1>
+    
+
+    <form action="mailto:vil018@ucsd.edu" method="post" enctype="text/plain">
+        <label>Email: <input name="email" type="email"></label>
+        <label>Subject: <input name="subject"></label>
+        <label>Body: <textarea name="body"></textarea></label>
+        <button>Submit</button>
+        
+    </form>
 </body>
 </html>
