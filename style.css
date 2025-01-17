@@ -51,16 +51,21 @@ body {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1em;
-    grid-template-columns: subgrid;
     
     label {
       display: grid;
+      grid-template-columns: subgrid;
       grid-column: 1 / -1;
 
-      input, textarea, button {
+      input, textarea{
         font: inherit;
+        grid-column: 2/3;
+      }
+
+      button {
+        font: inherit;
+        grid-column: 1/-1;
       }
     }
-
   }
 }
