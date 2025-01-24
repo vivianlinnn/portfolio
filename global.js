@@ -4,6 +4,7 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
+
 let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
@@ -27,17 +28,22 @@ for (let p of pages) {
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
+
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+    }
+    
+    a.classList.toggle(
+        'current',
+        a.host === location.host && a.pathname === location.pathname
+    );
+    
     nav.append(a);
 }
 
-if (a.host === location.host && a.pathname === location.pathname) {
-    a.classList.add('current');
-}
 
-a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname
-);
+
+
 
 
 
