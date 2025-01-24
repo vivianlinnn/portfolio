@@ -24,7 +24,7 @@ body {
     border-bottom-width:1px;
     border-bottom-style:solid;
     border-bottom-color:oklch(80.59% 0.0549 65.08);
-   
+    
     a {
       flex: 1;
       text-decoration: none;
@@ -54,7 +54,7 @@ body {
     }
         
       
-    
+    }
   }
 
   form {
