@@ -18,12 +18,15 @@ body {
 
   }
 
+
   nav {
+    
     display: flex;
     margin-bottom:20px;
     border-bottom-width:1px;
     border-bottom-style:solid;
     border-bottom-color:oklch(80.59% 0.0549 65.08);
+    
     
     a {
       flex: 1;
@@ -54,8 +57,20 @@ body {
     }
         
       
-    }
   }
+
+  @media (prefers-color-scheme: dark) {
+    nav {
+      --border-color: oklch(50% 10% 200 / 40%);
+      border-bottom-color: var(--border-color);
+      
+      a:hover {
+        background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+      }
+    }
+    
+  }
+}
 
   form {
     display: grid;
