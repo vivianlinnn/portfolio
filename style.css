@@ -189,5 +189,10 @@ label {
   position: absolute;
   top: 1rem;
   right: 1rem;
+
+  select {
+    font-family: inherit;
+    font-size: 80%;
+  }
 }
 
