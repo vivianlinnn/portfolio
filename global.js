@@ -23,9 +23,12 @@ for (let p of pages) {
     a.href = url;
     a.textContent = title;
     nav.append(a);
-    
+
     const ARE_WE_HOME = document.documentElement.classList.contains('home');
-    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
+        url = '../' + url;
+    }
+
 }
 
 
