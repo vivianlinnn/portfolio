@@ -185,4 +185,7 @@ body {
     }
 }
 
+label {
+  position: absolute;
+}
 
