@@ -40,8 +40,6 @@ body {
       border-bottom-width: 0.4em;
       border-bottom-style: solid;
       border-bottom-color: oklch(89.69% 0.0365 67.33);
-
-      
     }
 
     a:hover {
@@ -64,6 +62,10 @@ body {
       --border-color: oklch(50% 10% 200 / 40%);
       border-bottom-color: var(--border-color);
       
+      a:hover {
+        background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+
+      }
     }
     
   }
