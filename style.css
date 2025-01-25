@@ -67,8 +67,12 @@ body {
       border-bottom-color: var(--border-color);
       
       a:hover {
-        background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+        background-color: color-mix(in oklch, var(--border-color), canvas 85%);
 
+      }
+
+      a.current {
+        border-bottom-color: var(--border-color);
       }
     }
     
