@@ -59,6 +59,8 @@ const select = document.querySelector('.color-scheme');
 if ("colorScheme" in localStorage) {
     document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
     select.value = localStorage.colorScheme;
+} else {
+    select.value = 'light dark';
 }
 console.log(select)
 select.addEventListener('input', function (event) {
