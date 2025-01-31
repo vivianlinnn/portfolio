@@ -102,7 +102,11 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     let count = 0;
     const title_query = document.querySelector('.projects-title');
     const project_title = document.querySelector('.projects-title')
-    title_query.innerHTML = '';
+
+    if (title_query) {
+        title_query.innerHTML = '';
+    }
+    
 
     for (let p in project) {
         const article = document.createElement('article');
@@ -116,10 +120,19 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     }
 
     //update titles
-    const title = document.createElement('h1');
-    title.innerHTML = `${count} Projects`;
-    title_query.appendChild(title);
+    if (title_query) {
+        const title = document.createElement('h1');
+        title.innerHTML = `${count} Projects`;
+        title_query.appendChild(title);
+    }
+    
 }
+
+export async function fetchGitHubData(username) {
+    // return statement here
+    return fetchJSON(`https://api.github.com/users/${username}`);
+
+  }
 
 // let project = {
 //     "title": "Lorem ipsum dolor sit.",
