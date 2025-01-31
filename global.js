@@ -44,7 +44,7 @@ document.body.insertAdjacentHTML(
       <label>
           Theme:
           
-          <select>
+          <select id="color-picker">
               <option value="light dark">Automatic</option>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
@@ -54,7 +54,8 @@ document.body.insertAdjacentHTML(
 );
 
 
-const select = document.querySelector('.color-scheme');
+const select = document.querySelector('#color-picker');
+
 
 if ("colorScheme" in localStorage) {
     document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
@@ -62,12 +63,14 @@ if ("colorScheme" in localStorage) {
 } else {
     select.value = 'light dark';
 }
+
+
 console.log(select)
 select.addEventListener('input', function (event) {
     console.log('color scheme changed to', event.target.value);
     document.documentElement.style.setProperty('color-scheme', event.target.value);
     localStorage.colorScheme = event.target.value;
-    
+    select.value = event.target.value;
 });
 
 export async function fetchJSON(url) {
@@ -87,3 +90,29 @@ export async function fetchJSON(url) {
         console.error('Error fetching or parsing JSON data:', error);
     }
 }
+
+// console.log(fetchJSON("../projects/lib/projects.json"))
+
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+    // Your code will go here
+    containerElement.innerHTML = '';
+    const article = document.createElement('article');
+    article.innerHTML = `
+    <${headingLevel}>${project.title}</${headingLevel}>
+    <img src="${project.image}" alt="${project.title}">
+    <p>${project.description}</p>
+    `;
+    containerElement.appendChild(article);
+}
+
+// let project = {
+//     "title": "Lorem ipsum dolor sit.",
+//     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+//     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sapiente nemo, eos nobis provident, ducimus earum distinctio nesciunt minima nam expedita maxime vero perspiciatis facere at ea incidunt alias repudiandae."
+// }
+
+//test renderProjects
+// const containerElement = document.querySelector('.projects')
+// // console.log(containerElement)
+// let a = renderProjects(project, containerElement, 'h4')
+// console.log(containerElement)
