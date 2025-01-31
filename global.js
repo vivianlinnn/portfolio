@@ -98,6 +98,12 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
     // console.log(project)
 
+    //for title
+    let count = 0;
+    const title_query = document.querySelector('.projects-title');
+    const project_title = document.querySelector('.projects-title')
+    title_query.innerHTML = '';
+
     for (let p in project) {
         const article = document.createElement('article');
         article.innerHTML = `
@@ -106,7 +112,13 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         <p>${project[p].description}</p>
         `;
         containerElement.appendChild(article);
+        count ++;
     }
+
+    //update titles
+    const title = document.createElement('h1');
+    title.innerHTML = `${count} Projects`;
+    title_query.appendChild(title);
 }
 
 // let project = {
