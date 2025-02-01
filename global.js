@@ -119,7 +119,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         count ++;
     }
 
-    //update titles
+    //update title
     if (title_query) {
         const title = document.createElement('h1');
         title.innerHTML = `${count} Projects`;
