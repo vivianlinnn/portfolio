@@ -8,6 +8,7 @@ html {
 }
 
 body {
+   
   /* Set line height to 1.5 times the font size
         and use the OS’s UI font as the website font
       */
@@ -117,10 +118,13 @@ body {
       display: grid;
       grid-template-rows: subgrid;
       grid-row: span 3;
-      gap: 1em;
     
       h2{
         margin: 10;
+      }
+      .year {
+        font-family: Baskerville;
+        font-variant-numeric: oldstyle-nums;
       }
     }
   }
@@ -128,17 +132,22 @@ body {
   .intro {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    gap: 1em;
     
 
     .resume{
       background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
       padding: 2em;
+      
 
-      article p a {
-        color: inherit;
-        text-decoration: none;
-
+      article {
+        p a {
+          color: inherit;
+          text-decoration: none;
+  
+        }
       }
+        
       
       article p a:hover {
         accent-color: var(--color-accent2);
@@ -177,15 +186,22 @@ body {
     border-top-width:1px;
     border-top-style:solid;
     border-top-color: inherit;
+
   }
 
   .education {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1em;
 
     .resume{
       background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
       padding: 2em;
+
+      article {
+        gap: 1em;
+      }
+      
     }
     .resume:nth-child(2) {
       border-left: 20px solid inherit;
@@ -201,6 +217,12 @@ body {
     font-family: inherit;
     font-size: 80%;
   }
+}
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
 }
   
 }
@@ -224,5 +246,6 @@ body {
   }
   
 }
- 
+
+
 

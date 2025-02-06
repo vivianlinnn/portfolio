@@ -113,7 +113,11 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         article.innerHTML = `
         <${headingLevel}>${project[p].title}</${headingLevel}>
         <img src="${project[p].images}" alt="${project[p].title}">
-        <p>${project[p].description}</p>
+        <div>
+        <p class='year'>Year: ${project[p].year}</p>
+        <p>${project[p].description}</p> 
+        </div>
+        
         `;
         containerElement.appendChild(article);
         count ++;
