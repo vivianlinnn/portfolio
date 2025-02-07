@@ -1,6 +1,7 @@
 :root {
   --color-accent: oklch(96.02% 0.0171 67.62);
   --color-accent2:  oklch(89.69% 0.0365 67.33);
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
@@ -23,6 +24,7 @@ body {
 
   }
 
+  /* navigation */
 
   nav {
     
@@ -62,9 +64,9 @@ body {
       
   }
 
+  /* navigation dark mode */
   @media (prefers-color-scheme: dark) {
     nav {
-      --border-color: oklch(50% 10% 200 / 40%);
       border-bottom-color: var(--border-color);
       
       a:hover {
@@ -79,6 +81,7 @@ body {
     
   }
 
+  /* contact */
   form {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -101,6 +104,7 @@ body {
     }
   }
 
+  /* project */
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -129,6 +133,8 @@ body {
     }
   }
 
+  /* resume */
+  /* contact + profile*/
   .intro {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -163,6 +169,7 @@ body {
     
   }
 
+  /* experiences */
   .experiences article h3 a {
     color: inherit;
     text-decoration: none;
@@ -189,6 +196,7 @@ body {
 
   }
 
+  /* education */
   .education {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -218,14 +226,62 @@ body {
     font-size: 80%;
   }
 }
+
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
 
   overflow: visible;
 }
+
+.swatch {
+  display: inline-block;
+  width: 20px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+}
+
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  border-style: solid;
+  border-color: oklch(65.29% 0 332);
+  border-width: 1px;
+  padding: 1em;
+  margin: 0.5em;
+  flex: 1;
+
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+  }
+
+
+}
+
+
+/* @media (prefers-color-scheme: dark) {
+  .legend {
+    --border-color2: oklch(50% 10% 200 / 40%)
+    border-color: var(--border-color2);
+  }
+} */
   
 }
+
+
 
 #profile-stats {
   dl {
