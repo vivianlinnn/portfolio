@@ -5,6 +5,10 @@ const projectsContainer = document.querySelector('.projects');
 // console.log(projects)
 renderProjects(projects, projectsContainer, 'h2');
 
+let yearSelected = null;
+let selectedIndex = -1;
+let saveSVG; 
+let saveLegend;
 function renderPieChart(projectsGiven) {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     let rolledData = d3.rollups(
@@ -15,13 +19,15 @@ function renderPieChart(projectsGiven) {
 
     let data = rolledData.map(([year, count]) => {
         return { value: count, label: year };
+        
     });
-    
+    // console.log(data);
     let sliceGenerator = d3.pie().value((d) => d.value);
     let arcData = sliceGenerator(data);
     let arcs = arcData.map((d) => arcGenerator(d));
 
     let colors = d3.scaleOrdinal(d3.schemeObservable10);
+
 
     let newSVG = d3.select('svg')
     newSVG.selectAll('path').remove();
@@ -30,6 +36,7 @@ function renderPieChart(projectsGiven) {
         // TODO, fill in step for appending path to svg using D3
         newSVG.append('path').attr('d', arc).attr('fill', colors(idx) );
     })
+    console.log(newSVG);
 
     let legend = d3.select('.legend');
 
@@ -41,7 +48,7 @@ function renderPieChart(projectsGiven) {
             .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
     })
 
-    let selectedIndex = -1;
+    // let selectedIndex = -1;
     let svg = d3.select('svg');
     svg.selectAll('path').remove();
     arcs.forEach((arc, i) => {
@@ -51,7 +58,8 @@ function renderPieChart(projectsGiven) {
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
-            console.log('hi');
+            // console.log(selectedIndex);
+            // console.log('hi');
             svg
             .selectAll('path')
             .attr('class', (_, idx) => (
@@ -63,12 +71,26 @@ function renderPieChart(projectsGiven) {
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? 'selected' : null
             ));
+
+            if (selectedIndex === -1) {
+                renderProjects(projectsGiven, projectsContainer, 'h2');
+                
+            } else {
+                let selectedYear = data[selectedIndex].label;
+                let filteredProjects = projectsGiven.filter((project) => project.year === selectedYear);
+                renderProjects(filteredProjects, projectsContainer, 'h2');
+                yearSelected = selectedYear;
+            }
         });
-    });
+    }); 
+
+    console.log(svg);
+    saveSVG = svg;
+    saveLegend = legend;
 }
 
-renderPieChart(projects);
 
+renderPieChart(projects);
 
 
 /* search bar */
@@ -76,16 +98,32 @@ let query = '';
 let searchInput = document.querySelector('.searchBar');
 
 searchInput.addEventListener('input', (event) => {
-    
-  // update query value
-  query = event.target.value;
-  // filter projects
-  let filteredProjects = projects.filter((project) => {
-    let values = Object.values(project).join('\n').toLowerCase();
-    return values.includes(query.toLowerCase());
-  });
-  // render filtered projects
-  renderProjects(filteredProjects, projectsContainer, 'h2');
-  renderPieChart(filteredProjects);
-});
 
+    if (yearSelected) {
+        let byYear = projects.filter((project) => project.year === yearSelected);
+        // update query value
+        query = event.target.value;
+        // filter projects
+        let filteredProjects = byYear.filter((project) => {
+          let values = Object.values(project).join('\n').toLowerCase();
+          return values.includes(query.toLowerCase());
+        });
+        // render filtered projects
+        renderProjects(filteredProjects, projectsContainer, 'h2');
+      
+        if (query === '') {
+          renderPieChart(projects); // Reset to original projects
+          yearSelected = null;
+          } else {
+              renderPieChart(filteredProjects); // Update pie chart with filtered results
+          }
+    } else {
+        query = event.target.value;
+        let filteredProjects = projects.filter((project) => {
+            let values = Object.values(project).join('\n').toLowerCase();
+            return values.includes(query.toLowerCase());
+          });
+        renderProjects(filteredProjects, projectsContainer, 'h2');
+        renderPieChart(filteredProjects);
+    }
+});
