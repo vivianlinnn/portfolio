@@ -7,8 +7,7 @@ renderProjects(projects, projectsContainer, 'h2');
 
 let yearSelected = null;
 let selectedIndex = -1;
-let saveSVG; 
-let saveLegend;
+let selectedElement;
 function renderPieChart(projectsGiven) {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     let rolledData = d3.rollups(
@@ -84,9 +83,6 @@ function renderPieChart(projectsGiven) {
         });
     }); 
 
-    console.log(svg);
-    saveSVG = svg;
-    saveLegend = legend;
 }
 
 
