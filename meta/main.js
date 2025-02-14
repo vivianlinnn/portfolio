@@ -224,26 +224,37 @@ function createScatterplot() {
         updateTooltipVisibility(false);
     });
 
-
 }
 
 function updateTooltipContent(commit) {
     const link = document.getElementById('commit-link');
     const date = document.getElementById('commit-date');
+    const authors = document.getElementById('commit-author');
+    const time = document.getElementById('commit-time');
+    const lines = document.getElementById('commit-lines');
+
   
     if (Object.keys(commit).length === 0) return;
   
     link.href = commit.url;
     link.textContent = commit.id;
+
+    authors.href = 'https://github.com/vivianlinnn';
+    authors.textContent = commit.author;
+
+    time.textContent = commit.time;
+
+    lines.textContent = commit.lines.length;
+
     date.textContent = commit.datetime?.toLocaleString('en', {
       dateStyle: 'full',
     });
+
   }
 
 function updateTooltipVisibility(isVisible) {
     const tooltip = document.getElementById('commit-tooltip');
     tooltip.hidden = !isVisible;
-    
 }
 
 function updateTooltipPosition(event) {
