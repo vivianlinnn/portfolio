@@ -350,5 +350,74 @@ path {
   opacity: 0.15;
 }
 
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+#commit-tooltip {
+  background-color: white;
+  box-shadow: 10px 5px 5px oklch(86.52% 0 127);
+  border-radius: 10px;
+  backdrop-filter: 10px;
+  padding: 1em;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+.info dt {
+  font-weight: normal;
+  color: #555;
+}
+
+.info dd {
+  font-weight: bold;
+  margin: 0;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* 5 + 3 */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
 
 
