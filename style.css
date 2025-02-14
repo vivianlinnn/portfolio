@@ -374,6 +374,7 @@ dl.info {
   gap: 4px 12px;
   transition-duration: 500ms;
   transition-property: opacity, visibility;
+  opacity: 1;
 }
 
 .info dt {
@@ -400,6 +401,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
 }
 
 @keyframes marching-ants {
@@ -418,6 +420,25 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 100%;
+
+  dt {
+    grid-row: 1;
+    text-align: center;
+    font-weight: 700;
+
+  }
+  dd {
+    grid-row: 2;
+    text-align: center;
+    
+  }
+
 }
 
 
