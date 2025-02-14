@@ -346,5 +346,9 @@ path {
   }
 }
 
+.gridlines {
+  opacity: 0.15;
+}
+
 
 
