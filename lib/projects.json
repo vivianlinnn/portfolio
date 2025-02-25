@@ -1,8 +1,8 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "images": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "year": "2024",
+        "title": "Bikewatching",
+        "images": "../images/bike.jpeg",
+        "year": "2025",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sapiente nemo, eos nobis provident, ducimus earum distinctio nesciunt minima nam expedita maxime vero perspiciatis facere at ea incidunt alias repudiandae."
     },
     {

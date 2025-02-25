@@ -108,7 +108,7 @@ body {
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
+    gap: 1.5em;
     
     h1 {
       font-size: 400%;
@@ -131,6 +131,13 @@ body {
         font-variant-numeric: oldstyle-nums;
       }
     }
+
+    article img {
+      width: 335px; 
+      /* height: 325px; */
+      object-fit: contain; /* Ensures the aspect ratio is maintained */
+      display: block; /* Prevent inline spacing issues */
+  }
   }
 
   /* resume */
