@@ -112,7 +112,17 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
     for (let p in project) {
         const article = document.createElement('article');
-        article.innerHTML = `
+        if (project[p].images.endsWith("jpeg")) {
+            article.innerHTML = `
+            <${headingLevel}>${project[p].title}</${headingLevel}>
+            <img src="/images/${project[p].images}" alt="${project[p].title}">
+            <div>
+            <p class='year'>Year: ${project[p].year}</p>
+            <p>${project[p].description}</p> 
+            </div>
+            `;
+        } else {
+            article.innerHTML = `
         <${headingLevel}>${project[p].title}</${headingLevel}>
         <img src="${project[p].images}" alt="${project[p].title}">
         <div>
@@ -121,6 +131,8 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         </div>
         
         `;
+        }
+        
         containerElement.appendChild(article);
         count ++;
     }
