@@ -1,9 +1,10 @@
 let data = [];
 let commits = [];
-let brushSelection = null;
+// let brushSelection = null;
 let xScale;
 let yScale;
-
+let selectedCommits;
+let brushSelection;
 
 async function loadData() {
     data = await d3.csv('loc.csv', (row) => ({
@@ -276,24 +277,29 @@ function brushSelector() {
 
 function brushed(event) {
     // console.log(event);
+
     brushSelection = event.selection;
+    // console.log(!brushSelection)
+    selectedCommits = !brushSelection
+    ? []
+    : commits.filter((commit) => {
+        let min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+        let max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+        let x = xScale(commit.date);
+        let y = yScale(commit.hourFrac);
+
+        return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+      });
+
+    // brushSelection = event.selection;
     updateSelection();
     updateSelectionCount();
     updateLanguageBreakdown();
 }
 
 function isCommitSelected(commit) {
-    if (!brushSelection) {
-      return false;
-    } 
-    const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
-    const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-    const x = xScale(commit.date); 
-    const y = yScale(commit.hourFrac);
-    return x >= min.x && x <= max.x && y >= min.y && y <= max.y; 
-
-
-  }
+  return selectedCommits.includes(commit);
+}
 
 function updateSelection() {
     // Update visual state of dots based on selection
