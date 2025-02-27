@@ -20,6 +20,7 @@ function renderPieChart(projectsGiven) {
         return { value: count, label: year };
         
     });
+    
     // console.log(data);
     let sliceGenerator = d3.pie().value((d) => d.value);
     let arcData = sliceGenerator(data);
