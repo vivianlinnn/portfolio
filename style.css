@@ -448,4 +448,24 @@ circle.selected {
 
 }
 
+#slider-label {
+  flex: 1;
+  align-items: baseline;
+  padding: 2em;
+
+  #slider {
+    width: 60%;
+  }
+
+  #slider-time {
+    margin-left: auto;
+  }
+}
+
+@starting-style {
+  /* r: 0; */
+  transition: all 200ms, r calc(var(--r) * 100ms);
+}
+
+
 

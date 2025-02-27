@@ -11,7 +11,14 @@
     <p>This page includes stats about code of this website.</p>
     <div id="stats"></div>
 
+    
     <h2>Commits by time of day</h2>
+    <div id="slider-label">
+        <label>Show commits until:</label>
+        <input id="slider" type=range min="0" max="100" value="100">
+        <time id="slider-time"></time>
+    </div>
+   
     <div id="chart"></div>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>
