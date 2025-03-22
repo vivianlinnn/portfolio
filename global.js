@@ -115,7 +115,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         if (project[p].images.endsWith("jpeg")) {
             article.innerHTML = `
             <${headingLevel}>${project[p].title}</${headingLevel}>
-            <img src="images/${project[p].images}" alt="${project[p].title}">
+            <img src="/images/${project[p].images}" alt="${project[p].title}">
             <div>
             <p class='year'>Year: ${project[p].year}</p>
             <p>${project[p].description}</p> 
