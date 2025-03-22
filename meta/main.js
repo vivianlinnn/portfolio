@@ -6,8 +6,12 @@ let yScale;
 let selectedCommits;
 let brushSelection;
 
+
+
 let filteredCommits;
 let filteredData;
+
+let files = [];
 
 let commitProgress = 100;
 const commitTime = document.getElementById('slider-time');
@@ -53,7 +57,30 @@ function showTime() {
   filteredCommits = commits.filter(d => d.datetime <= commitMaxTime);
   filteredData = data.filter(d => d.datetime <= commitMaxTime);
   displayStats();
+
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  files = d3
+  .groups(lines, (d) => d.file)
+  .map(([name, lines]) => {
+    return { name, lines };
+  });
+
+  console.log(files.map(f => f.name))
+  
+
+  d3.select('.files').selectAll('div').remove(); // don't forget to clear everything first so we can re-render
+
+  let filesContainer = d3.select('.files').selectAll('div').data(files).enter().append('div'); 
+  filesContainer.append('dt').append('code').text(d => files.map(f => f.name));
+  filesContainer.append('dd').text(d => files.map(f=>`${f.lines.length} lines`));
+  
+  // filesContainer.append('dd')
+  //             .selectAll('div')
+  //             .data(d => d.lines);
+
   createScatterplot();
+
+  
 }
 
 
